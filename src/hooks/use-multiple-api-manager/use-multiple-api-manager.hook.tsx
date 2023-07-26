@@ -47,6 +47,10 @@ export function useMultipleApiManager() {
         });
         apiItemsNow.current = apiItems;
       }).catch((error) => {
+        if (typeof options?.onError === 'function') {
+          options.onError(item, error);
+        }
+
         if ((item.retryedCount ?? 0) < item.retryCount) {
           item.retryedCount = (item.retryedCount ?? 0) + 1;
           disposeAxios(item, index);

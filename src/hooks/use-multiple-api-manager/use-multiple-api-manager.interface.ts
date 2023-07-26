@@ -15,6 +15,7 @@ export declare namespace IUseMultipleApiManager {
 
   export interface FetchOptions {
     onComplete?: (apiItems: IUseMultipleApiManager.ApiItem[]) => void;
+    onError?: (targetApiItem: IUseMultipleApiManager.ApiItem, error: any) => void;
   }
 
   export interface Props {
