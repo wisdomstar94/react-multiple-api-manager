@@ -7,6 +7,7 @@ export declare namespace IUseMultipleApiManager {
     key: string;
     axiosOptions: AxiosRequestConfig<any>;
     retryCount: number;
+    initDelay?: number;
     retryedCount?: number;
     isComplete?: boolean;
     isSuccess?: boolean;

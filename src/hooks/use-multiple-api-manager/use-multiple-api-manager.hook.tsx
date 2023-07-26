@@ -1,6 +1,7 @@
 import axios, { Canceler } from "axios";
 import { useCallback, useRef, useState } from "react";
 import { IUseMultipleApiManager } from "./use-multiple-api-manager.interface";
+import { isNumber } from "@/functions/common.function";
 
 export function useMultipleApiManager() {
   const [isFetched, setIsFetched] = useState<boolean>(false);
@@ -77,7 +78,13 @@ export function useMultipleApiManager() {
     }
 
     apiItems.forEach((item, index) => {
-      disposeAxios(item, index);
+      if (isNumber(item.initDelay)) {
+        setTimeout(() => {
+          disposeAxios(item, index);
+        }, item.initDelay);
+      } else {
+        disposeAxios(item, index);
+      }
     });
   }, [isComplete]);
 
