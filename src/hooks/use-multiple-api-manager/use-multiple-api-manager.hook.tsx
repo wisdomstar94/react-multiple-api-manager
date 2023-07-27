@@ -1,7 +1,6 @@
 import axios, { Canceler } from "axios";
 import { useCallback, useRef, useState } from "react";
 import { IUseMultipleApiManager } from "./use-multiple-api-manager.interface";
-import { isNumber } from "@/functions/common.function";
 
 export function useMultipleApiManager() {
   const [isFetched, setIsFetched] = useState<boolean>(false);
@@ -96,4 +95,10 @@ export function useMultipleApiManager() {
     fetch,
     canceledInfo,
   };
+}
+
+function isNumber(value: any): value is number {
+  if (typeof value !== 'number') return false;
+  if (isNaN(value)) return false;
+  return true;
 }
