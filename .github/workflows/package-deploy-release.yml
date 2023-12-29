@@ -21,6 +21,7 @@ jobs:
       - run: npm install
         env:
           NODE_AUTH_TOKEN: ${{secrets.PACKAGE_PUBLISH_KEY_GITHUB}}
+      - run: npm i -D lightningcss-linux-x64-gnu
       - run: npm run pack:build
       - run: npm run pack:build:tsc
       - run: mv ./index.ts ./index.d.ts
